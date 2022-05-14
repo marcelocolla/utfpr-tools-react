@@ -1,15 +1,12 @@
-export type ModuleFederationConfigParams = {
-  filename?: string
-  remotes?: ModuleRemotes,
-  shared?: ModuleShared,
-}
-
-export type ModuleFederationConfig = ModuleFederationConfigParams & {
-  name: string
+export type ModuleFederationConfig = {
+  name?: string
   filename: string
+  remotes?: GenericConfig
+  shared?: ModuleShared
+  exposes?: GenericConfig
 }
 
-export type ModuleRemotes = {
+export type GenericConfig = {
   [key: string]: string
 }
 

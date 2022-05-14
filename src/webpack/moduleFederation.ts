@@ -1,15 +1,15 @@
-import { ModuleFederationConfigParams, ModuleFederationConfig, ModuleShared } from "./moduleFederation.types";
+import { ModuleFederationConfig, ModuleShared } from './moduleFederation.types'
 
-export function moduleFederationConfig (name: string, params?: ModuleFederationConfigParams): ModuleFederationConfig {
-  const data = Object.assign({ filename: 'remoteEntry.js' }, params)
-  
+export function moduleFederationConfig<T = ModuleFederationConfig>(name: string, params?: T): T {
+  const config = Object.assign({ filename: 'remoteEntry.js' }, params)
+
   return {
-    ...data,
+    ...config,
     name,
   }
 }
 
-export function moduleFederationSharedByReact (dependencies?: ModuleShared): ModuleShared {
+export function moduleFederationSharedByReact(dependencies?: ModuleShared): ModuleShared {
   const initialValue: ModuleShared = {
     react: {
       singleton: true,
